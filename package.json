@@ -8,9 +8,14 @@
     "start": "next start"
   },
   "dependencies": {
+    "@upstash/redis": "^1.36.4",
+    "@vercel/kv": "^3.0.0",
+    "date-fns": "^4.1.0",
     "next": "16.1.6",
+    "plaid": "^41.4.0",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "react-plaid-link": "^4.1.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

@@ -1,26 +1,192 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --royal-blue: #1F3C88;
+  --turquoise: #2FAFA3;
+  --gold: #C99A2E;
+  --mosaic-brown: #3A2A22;
+  --ivory: #F7F4EC;
+  --clay: #8C3D2E;
+  /* Legacy aliases used in inline styles */
+  --blue-deep: #1F3C88;
+  --teal: #2FAFA3;
+  --ink: #3A2A22;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background-color: var(--ivory);
+  color: var(--mosaic-brown);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--ivory);
+  font-family: var(--font-poppins), system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Layout */
+.container-main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Cards */
+.card {
+  background: white;
+  border: 1px solid rgba(201, 154, 46, 0.18);
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 4px 16px rgba(31, 60, 136, 0.08);
+}
+
+.card-elevated {
+  background: white;
+  border: 1px solid rgba(201, 154, 46, 0.18);
+  border-top: 3px solid var(--gold);
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08), 0 8px 24px rgba(31, 60, 136, 0.12);
+}
+
+/* Buttons */
+.btn-primary {
+  background: linear-gradient(135deg, #1F3C88, #2a4fa8);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: opacity 0.15s, transform 0.1s;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-primary:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--royal-blue);
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1.5px solid var(--royal-blue);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-secondary:hover {
+  background: var(--royal-blue);
+  color: white;
+}
+
+.btn-teal {
+  background: var(--turquoise);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-teal:hover:not(:disabled) {
+  opacity: 0.88;
+}
+
+/* Radio card */
+.radio-card {
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 1rem;
+  background: white;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.radio-card:hover {
+  border-color: rgba(201, 154, 46, 0.4);
+}
+
+.radio-card.selected {
+  border-color: var(--royal-blue);
+  border-left-width: 4px;
+  box-shadow: 0 0 0 3px rgba(31, 60, 136, 0.08);
+}
+
+/* Geometric watermark background */
+.geo-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.geo-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cg fill='none' stroke='%231F3C88' stroke-width='1'%3E%3Cpolygon points='60,8 112,60 60,112 8,60'/%3E%3Crect x='22' y='22' width='76' height='76'/%3E%3C/g%3E%3Ccircle cx='60' cy='60' r='7' fill='none' stroke='%23C99A2E' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-size: 120px 120px;
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+/* Arch top decoration */
+.arch-top {
+  position: relative;
+}
+
+.arch-top::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 30px;
+  border: 2px solid rgba(201, 154, 46, 0.35);
+  border-bottom: none;
+  border-radius: 30px 30px 0 0;
+}
+
+/* Ring fill animation */
+@keyframes ring-fill {
+  from {
+    stroke-dashoffset: 502.65;
+  }
+  to {
+    stroke-dashoffset: var(--ring-target-offset);
+  }
+}
+
+/* Number input spinner */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  opacity: 0.5;
 }
